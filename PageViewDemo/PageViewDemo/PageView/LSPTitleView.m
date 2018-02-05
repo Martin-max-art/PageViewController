@@ -1,7 +1,7 @@
 //
 //  XTitleView.m
 //  PageViewDemo
-//
+//  https://github.com/MrLSPBoy/PageViewController
 //  Created by Object on 17/7/11.
 //  Copyright © 2017年 Object. All rights reserved.
 //
@@ -232,7 +232,7 @@
     UILabel *currentLabel = (UILabel *)tap.view;
     //如果重复点击同一个title，那么直接返回
     if (currentLabel.tag - 10 == self.currentIndex) {
-        NSLog(@"相同的indnex");
+//        NSLog(@"相同的indnex");
         return;
     }
     //获取之前的Label
@@ -331,7 +331,7 @@
 }
 
 - (void)contentViewDidEndScroll{
-    NSLog(@"======contentViewDidEndScroll");
+//    NSLog(@"======contentViewDidEndScroll");
     //如果不需要滚动，则不需要调整中间位置
     if (!self.style.isTitleViewScrollEnable) {
         return;

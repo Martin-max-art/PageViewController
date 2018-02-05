@@ -1,7 +1,7 @@
 //
 //  XTitleStyle.m
 //  PageViewDemo
-//
+//  https://github.com/MrLSPBoy/PageViewController
 //  Created by Object on 17/7/11.
 //  Copyright © 2017年 Object. All rights reserved.
 //

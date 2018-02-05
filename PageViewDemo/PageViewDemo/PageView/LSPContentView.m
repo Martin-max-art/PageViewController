@@ -1,7 +1,7 @@
 //
 //  XContentView.m
 //  PageViewDemo
-//
+//  https://github.com/MrLSPBoy/PageViewController
 //  Created by Object on 17/7/11.
 //  Copyright © 2017年 Object. All rights reserved.
 //
@@ -137,7 +137,7 @@ static NSString *kContentCellID = @"kContentCellID";
 
         //计算targetIndex
         targetIndex = sourceIndex + 1;
-        NSLog(@"targetIndex=%zd",targetIndex);
+//        NSLog(@"targetIndex=%zd",targetIndex);
         if (targetIndex >= self.childVcs.count) {
             targetIndex = self.childVcs.count - 1;
             sourceIndex = self.childVcs.count - 1;
