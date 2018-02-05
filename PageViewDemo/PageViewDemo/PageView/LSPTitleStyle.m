@@ -22,11 +22,11 @@
         self.isShowBottomLine = YES;
         self.bottomLineColor = [UIColor orangeColor];
         self.bottomLineH = 2.0;
-        self.isNeedScale = NO;
+        self.isNeedScale = YES;
         self.scaleRange = 1.2;
-        self.isShowCover = NO;
-        self.coverBgColor = [UIColor clearColor];
-        self.coverMargin = 5.0;
+        self.isShowCover = YES;
+        self.coverBgColor = [UIColor yellowColor];
+        self.coverMargin = 0.0;
         self.coverH = 25.0;
         self.coverRadius = 5;
     }
