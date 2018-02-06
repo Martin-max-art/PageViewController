@@ -77,6 +77,10 @@
 #pragma mark - XTitleViewDelegate
 - (void)titleViewWithTitleView:(LSPTitleView *)titleView selectedIndex:(NSInteger)selectedIndex{
     [self.contentView setCurrentIndex:selectedIndex];
+    
+    if ([self.delegate respondsToSelector:@selector(pageViewScollEndView:WithIndex:)]) {
+        [self.delegate pageViewScollEndView:self WithIndex:selectedIndex];
+    }
 }
 
 #pragma mark - XContentViewDelegate
@@ -85,6 +89,12 @@
 }
 - (void)contentViewEndScrollWithContentView:(LSPContentView *)contentView{
     [self.titleView contentViewDidEndScroll];
+}
+- (void)scrollViewDidEndDeceleratingWithIndex:(NSInteger)index
+{
+    if ([self.delegate respondsToSelector:@selector(pageViewScollEndView:WithIndex:)]) {
+        [self.delegate pageViewScollEndView:self WithIndex:index];
+    }
 }
 
 @end

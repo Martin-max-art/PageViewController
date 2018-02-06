@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 #import "LSPPageView.h"
-@interface ViewController ()
+@interface ViewController ()<LSPPageViewDelegate>
 
 @end
 
@@ -26,7 +26,7 @@
     for (int i = 0; i < 15; i++) {
         [testArray addObject:[NSString stringWithFormat:@"Test%d",i]];
     }
-//    NSArray *titles = @[@"BTC0",@"ETH",@"BNB",@"TRX",@"BTC",@"ETH",@"BNB",@"TRX"];
+
     NSMutableArray *childVcArray = [NSMutableArray array];
     for (int i = 0; i < testArray.count; i++) {
         UIViewController *vc = [[UIViewController alloc] init];
@@ -38,22 +38,15 @@
         [childVcArray addObject:vc];
     }
     LSPPageView *pageView = [[LSPPageView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64) titles:testArray.mutableCopy style:nil childVcs:childVcArray.mutableCopy parentVc:self];
+    pageView.delegate = self;
     pageView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:pageView];
 
 }
-
-- (void)testSegment{
-   
-}
-
-- (void)change:(UISegmentedControl *)seg{
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - LSPPageViewDelegate
+- (void)pageViewScollEndView:(LSPPageView *)pageView WithIndex:(NSInteger)index
+{
+    NSLog(@"第%zd个",index);
 }
 
 

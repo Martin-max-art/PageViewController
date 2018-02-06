@@ -10,10 +10,19 @@
 #import "LSPTitleStyle.h"
 #import "LSPTitleView.h"
 #import "LSPContentView.h"
+
+@class LSPPageView;
+@protocol LSPPageViewDelegate <NSObject>
+
+//页面切换完成之后
+- (void)pageViewScollEndView:(LSPPageView *)pageView WithIndex:(NSInteger)index;
+
+@end
+
 @interface LSPPageView : UIView
 
 /**
- 直接在需要PageView的控制器中，一句代码实例化(调用此方法),如需更改TitleView和ContentView的Frame在XTitleStyle.m中重新设置Frame即可
+ 直接在需要PageView的控制器中，一句代码实例化(调用此方法),如需更改TitleView的样式在LSPTitleStyle.m中重新设置即可
 
  @param frame PageView的Frame
  @param titles 标题数组
@@ -23,5 +32,8 @@
  @return pageView
  */
 - (LSPPageView *)initWithFrame:(CGRect)frame titles:(NSArray <NSString *>*)titles style:(LSPTitleStyle *)style childVcs:(NSArray <UIViewController *>*)childVcs parentVc:(UIViewController *)parentVc;
+
+
+@property(nonatomic, weak) id <LSPPageViewDelegate> delegate;
 
 @end

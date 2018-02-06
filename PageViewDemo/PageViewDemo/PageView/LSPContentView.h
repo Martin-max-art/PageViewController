@@ -15,6 +15,8 @@
 
 - (void)contentViewEndScrollWithContentView:(LSPContentView *)contentView;
 
+- (void)scrollViewDidEndDeceleratingWithIndex:(NSInteger)index;
+
 @end
 
 @interface LSPContentView : UIView

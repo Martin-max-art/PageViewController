@@ -198,6 +198,10 @@ static NSString *kContentCellID = @"kContentCellID";
     if ([self.delegate respondsToSelector:@selector(contentViewEndScrollWithContentView:)]) {
         [self.delegate contentViewEndScrollWithContentView:self];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(scrollViewDidEndDeceleratingWithIndex:)]) {
+        [self.delegate scrollViewDidEndDeceleratingWithIndex:(NSInteger)(currentOffsetX / scrollViewW)];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
