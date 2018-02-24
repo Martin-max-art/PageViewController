@@ -14,7 +14,7 @@
 
 //================内容的属性==============//
 /**
- 内容是否需要滑动，如果设为NO，则只有点击标题才会切花视图
+ 内容是否需要滑动，如果设为NO，则只有点击标题才会切换视图
  */
 @property(nonatomic, assign) BOOL isContentViewScrollEnable;
 

@@ -24,7 +24,7 @@
         self.bottomLineH = 2.0;
         self.isNeedScale = YES;
         self.scaleRange = 1.2;
-        self.isShowCover = YES;
+        self.isShowCover = NO;
         self.coverBgColor = [UIColor yellowColor];
         self.coverMargin = 0.0;
         self.coverH = 25.0;

@@ -174,23 +174,20 @@ static NSString *kContentCellID = @"kContentCellID";
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
     CGFloat currentOffsetX = scrollView.contentOffset.x;
     CGFloat scrollViewW = scrollView.bounds.size.width;
 
     //快速滑动之后 可能会出现偏差 需要重置
-    if (currentOffsetX > self.startOffsetX && (currentOffsetX - self.startOffsetX >= scrollViewW)) {
-        
-        NSInteger sourceIndex = (NSInteger)(currentOffsetX / scrollViewW);
-        NSInteger targetIndex = sourceIndex;
+    NSInteger targetIndex = (NSInteger)(currentOffsetX / scrollViewW);
+    if (targetIndex >= self.childVcs.count - 1)
+    {
+//        NSLog(@"目标====%zd",targetIndex);
+        NSInteger sourceIndex = targetIndex;
         CGFloat progress = 1.0;
-        
-        if (targetIndex >= self.childVcs.count) {
-            targetIndex = self.childVcs.count - 1;
-            sourceIndex = self.childVcs.count - 1;
-        }
-        
-        if ([self.delegate respondsToSelector:@selector(contentViewWith:progress:sourceIndex:targetIndex:)]) {
-          
+        if ([self.delegate respondsToSelector:@selector(contentViewWith:progress:sourceIndex:targetIndex:)])
+        {
+            
             [self.delegate contentViewWith:self progress:progress sourceIndex:sourceIndex targetIndex:targetIndex];
         }
     }
