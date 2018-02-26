@@ -18,7 +18,7 @@ static NSString *kContentCellID = @"kContentCellID";
 /**
  父控制器
  */
-@property(nonatomic, strong) UIViewController *parentVc;
+@property(nonatomic, weak) UIViewController *parentVc;
 /**
  是否禁止ScollView拖动，防止两个代理产生死循环
  */

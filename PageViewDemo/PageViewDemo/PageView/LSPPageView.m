@@ -25,7 +25,7 @@
 /**
  父控制器
  */
-@property(nonatomic, strong) UIViewController *parentVc;
+@property(nonatomic, weak) UIViewController *parentVc;
 /**
  标题视图
  */
