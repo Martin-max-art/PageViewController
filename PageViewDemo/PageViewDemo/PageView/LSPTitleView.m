@@ -202,7 +202,7 @@
     
     [self.scrollView addSubview:self.bottomLine];
     
-    self.bottomLine.frame = CGRectMake(self.titleLabels.firstObject.frame.origin.x, self.bounds.size.height - self.style.bottomLineH, self.titleLabels.firstObject.frame.size.width, self.style.bottomLineH);
+    self.bottomLine.frame = CGRectMake((self.titleLabels.firstObject.frame.size.width - self.style.bottomLineW) / 2.0, self.bounds.size.height - self.style.bottomLineH, self.style.bottomLineW, self.style.bottomLineH);
 }
 
 - (void)setupCoverView{
@@ -254,10 +254,11 @@
     [self contentViewDidEndScroll];
     
     
+    
     //调整bottomLine
     if (self.style.isShowBottomLine){
         [UIView animateWithDuration:0.5 animations:^{
-            self.bottomLine.frame = CGRectMake(currentLabel.frame.origin.x, self.bottomLine.frame.origin.y, currentLabel.frame.size.width, self.bottomLine.frame.size.height);
+            self.bottomLine.frame = CGRectMake(currentLabel.frame.origin.x + ((currentLabel.frame.size.width - self.bottomLine.frame.size.width) / 2.0), self.bottomLine.frame.origin.y, self.style.bottomLineW, self.bottomLine.frame.size.height);
         }];
     }
     
@@ -305,9 +306,9 @@
     //计算滚动的范围差值
     if (self.style.isShowBottomLine){
         
-        CGFloat x = sourceLabel.frame.origin.x + moveTotalX * progress;
+        CGFloat x = sourceLabel.frame.origin.x + ((sourceLabel.frame.size.width - self.style.bottomLineW)/2.0) + moveTotalX * progress;
         
-        CGFloat width = sourceLabel.frame.size.width + moveTotalW * progress;
+        CGFloat width = self.style.bottomLineW + moveTotalW * progress;
         
         self.bottomLine.frame = CGRectMake(x, self.bottomLine.frame.origin.y,width, self.bottomLine.frame.size.height);
     }

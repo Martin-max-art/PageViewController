@@ -156,13 +156,12 @@ static NSString *kContentCellID = @"kContentCellID";
 
         //计算targetIndex
         targetIndex = (NSInteger)(currentOffsetX / scrollViewW);
-//        NSLog(@"**右滑目标************%zd",targetIndex);
+
         //计算sourceIndex
         sourceIndex = targetIndex + 1;
         
-//        NSLog(@"**右滑原来***********%zd",sourceIndex);
         if (sourceIndex >= self.childVcs.count) {
-//             NSLog(@"***右滑《《《终点目标》》》**********%zd",targetIndex);
+
             sourceIndex = self.childVcs.count - 1;
         }
     }

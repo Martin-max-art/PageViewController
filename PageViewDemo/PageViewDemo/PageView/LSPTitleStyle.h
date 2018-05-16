@@ -48,11 +48,15 @@
 /**
  底部滚动条的颜色
  */
-@property(nonatomic, assign) UIColor *bottomLineColor;
+@property(nonatomic, strong) UIColor *bottomLineColor;
 /**
  底部滚动条的高度
  */
 @property(nonatomic, assign) CGFloat bottomLineH;
+/**
+ 底部滚动条的宽度
+ */
+@property (nonatomic,assign) CGFloat bottomLineW;
 
 
 //================标题带缩放==============//
