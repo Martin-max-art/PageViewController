@@ -24,6 +24,8 @@
 
 - (void)contentViewDidEndScroll;
 
+- (void)setSelectTitleIndex:(NSInteger)index;
+
 @property(nonatomic, weak) id<LSPTitleViewDelegate> delegate;
 
 

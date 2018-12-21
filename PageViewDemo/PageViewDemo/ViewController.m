@@ -38,6 +38,7 @@
         [childVcArray addObject:vc];
     }
     LSPPageView *pageView = [[LSPPageView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64) titles:testArray.mutableCopy style:nil childVcs:childVcArray.mutableCopy parentVc:self];
+    [pageView setToIndex:3];
     pageView.delegate = self;
     pageView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:pageView];

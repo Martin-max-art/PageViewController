@@ -33,6 +33,12 @@
  */
 - (LSPPageView *)initWithFrame:(CGRect)frame titles:(NSArray <NSString *>*)titles style:(LSPTitleStyle *)style childVcs:(NSArray <UIViewController *>*)childVcs parentVc:(UIViewController *)parentVc;
 
+/**
+ 可以设置跳转到指定界面
+ 默认是0
+ @param index
+ */
+- (void)setToIndex:(NSInteger)index;
 
 @property(nonatomic, weak) id <LSPPageViewDelegate> delegate;
 

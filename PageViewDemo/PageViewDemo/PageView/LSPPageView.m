@@ -97,4 +97,13 @@
     }
 }
 
+- (void)setToIndex:(NSInteger)index
+{
+    if (index < self.titles.count)
+    {
+        [self.titleView setSelectTitleIndex:index];
+    }
+    
+}
+
 @end

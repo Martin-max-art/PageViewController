@@ -227,6 +227,57 @@
     
 }
 
+- (void)setSelectTitleIndex:(NSInteger)index
+{
+    UILabel *currentLabel = self.titleLabels[index];
+    //如果重复点击同一个title，那么直接返回
+    if (index == self.currentIndex) {
+        //        NSLog(@"相同的indnex");
+        return;
+    }
+    //获取之前的Label
+    UILabel *oldLabel = self.titleLabels[self.currentIndex];
+    
+    //切换文字颜色
+    currentLabel.textColor = self.style.selectedColor;
+    oldLabel.textColor = self.style.normalColor;
+    //保存最新Label的下标值
+    self.currentIndex = currentLabel.tag - 10;
+    
+    
+    //通知代理
+    if ([self.delegate respondsToSelector:@selector(titleViewWithTitleView:selectedIndex:)]) {
+        [self.delegate titleViewWithTitleView:self selectedIndex:self.currentIndex];
+    }
+    
+    //居中显示
+    [self contentViewDidEndScroll];
+    
+    
+    
+    //调整bottomLine
+    if (self.style.isShowBottomLine){
+        [UIView animateWithDuration:0.5 animations:^{
+            self.bottomLine.frame = CGRectMake(currentLabel.frame.origin.x + ((currentLabel.frame.size.width - self.bottomLine.frame.size.width) / 2.0), self.bottomLine.frame.origin.y, self.style.bottomLineW, self.bottomLine.frame.size.height);
+        }];
+    }
+    
+    //调整比例
+    if (self.style.isNeedScale) {
+        oldLabel.transform = CGAffineTransformIdentity;
+        currentLabel.transform = CGAffineTransformMakeScale(self.style.scaleRange, self.style.scaleRange);
+    }
+    
+    if (self.style.isShowCover) {
+        CGFloat coverX = self.style.isTitleViewScrollEnable ? (currentLabel.frame.origin.x - self.style.coverMargin) : (currentLabel.frame.origin.x);
+        CGFloat coverW = self.style.isTitleViewScrollEnable ? (currentLabel.frame.size.width + self.style.coverMargin * 2) : (currentLabel.frame.size.width);
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            self.coverView.frame = CGRectMake(coverX, self.coverView.frame.origin.y, coverW, self.coverView.frame.size.height);
+        }];
+    }
+}
+
 - (void)titleLabelClick:(UITapGestureRecognizer *)tap{
     
     UILabel *currentLabel = (UILabel *)tap.view;
